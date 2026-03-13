@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-purple: #bc00ff;
+  --bg-dark: #050505;
+  --panel-bg: rgba(12, 12, 15, 0.98);
+}
+
+/* --- HUD & SCANLINES --- */
+.scanlines {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1001;
+  pointer-events: none;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+}
+
+.noise {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.1;
+  background-image: radial-gradient(#fff 1px, transparent 0);
+  background-size: 5px 5px;
+}
+
+/* --- VAULT CONTAINER --- */
+.vault-container {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  font-family: 'Rajdhani', sans-serif;
+  padding: 80px 5%;
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.vault-content h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem; /* Massive Scale */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  text-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.section-tag { color: var(--neon-cyan); font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 4px; }
+
+/* --- VAULT CARDS --- */
+.vault-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.vault-card {
+  background: var(--panel-bg);
+  border: 1px solid #222;
+  border-left: 5px solid var(--neon-cyan);
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 250px 1fr 150px;
+  gap: 30px;
+  align-items: center;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 98% 100%, 0 100%); /* Angular design */
+  transition: 0.3s;
+}
+
+.vault-card:hover {
+  border-left-color: var(--neon-purple);
+  transform: translateX(10px);
+  background: #111;
+}
+
+/* CERT PREVIEW */
+.cert-preview {
+  position: relative;
+}
+
+.cert-img {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid #333;
+  filter: grayscale(0.5) contrast(1.2);
+  transition: 0.3s;
+}
+
+.vault-card:hover .cert-img { filter: grayscale(0); border-color: var(--neon-cyan); }
+
+.cert-badge {
+  position: absolute;
+  top: 10px; left: 10px;
+  background: var(--neon-cyan);
+  color: #000;
+  font-family: 'Orbitron';
+  font-size: 0.6rem;
+  font-weight: 900;
+  padding: 2px 8px;
+}
+
+/* DETAILS */
+.cert-details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-row span {
+  font-family: 'Orbitron';
+  font-size: 0.65rem;
+  color: var(--neon-cyan);
+  letter-spacing: 1px;
+}
+
+.detail-row strong { font-size: 1.25rem; color: #fff; }
+
+.detail-row.highlight strong { color: var(--neon-purple); text-shadow: 0 0 8px var(--neon-purple); }
+
+/* LINKS */
+.action-links {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.cyber-link {
+  font-family: 'Orbitron';
+  font-size: 0.75rem;
+  color: var(--neon-cyan);
+  text-decoration: none;
+  border: 1px solid var(--neon-cyan);
+  padding: 5px 15px;
+  transition: 0.3s;
+}
+
+.cyber-link:hover { background: var(--neon-cyan); color: #000; box-shadow: 0 0 15px var(--neon-cyan); }
+
+/* VERIFICATION */
+.verification-zone {
+  text-align: center;
+}
+
+.qr-wrapper {
+  padding: 10px;
+  border: 1px solid var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.05);
+  display: inline-block;
+}
+
+.qr-label {
+  font-family: 'Orbitron';
+  font-size: 0.6rem;
+  color: var(--neon-cyan);
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+
+.status-msg { font-family: 'Orbitron'; color: var(--neon-purple); letter-spacing: 3px; }

@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-purple: #bc00ff;
+  --bg-dark: #050505;
+  --panel-bg: rgba(12, 12, 15, 0.98);
+}
+
+/* --- HUD & SCANLINES --- */
+.scanlines {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1001;
+  pointer-events: none;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+}
+
+.noise {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.1;
+  background-image: radial-gradient(#fff 1px, transparent 0);
+  background-size: 5px 5px;
+}
+
+/* --- CONTAINER --- */
+.ledger-container {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  font-family: 'Rajdhani', sans-serif;
+  padding: 80px 5%;
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* --- LEDGER BOX --- */
+.ledger-box {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.ledger-box h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem; /* Massive Scale */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  text-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.section-tag { color: var(--neon-cyan); font-family: 'Orbitron'; font-size: 0.8rem; letter-spacing: 4px; }
+
+/* --- LEDGER ITEMS --- */
+.ledger-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ledger-item {
+  background: var(--panel-bg);
+  border: 1px solid #222;
+  border-left: 5px solid var(--neon-cyan);
+  padding: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 98% 100%, 0 100%); /* Angular design */
+  transition: 0.3s;
+}
+
+.ledger-item:hover {
+  border-left-color: var(--neon-purple);
+  transform: translateX(10px);
+  background: #111;
+}
+
+.ledger-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  width: 85%;
+}
+
+.ledger-row {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.ledger-row span {
+  font-family: 'Orbitron';
+  font-size: 0.65rem;
+  color: var(--neon-cyan);
+  letter-spacing: 1px;
+}
+
+.ledger-row strong {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.ledger-row.highlight strong {
+  color: var(--neon-purple);
+  text-shadow: 0 0 8px var(--neon-purple);
+}
+
+.ledger-row.technical {
+  grid-column: span 2;
+}
+
+.ledger-row code {
+  font-size: 0.8rem;
+  color: #555;
+  word-break: break-all;
+}
+
+/* STATUS STAMP */
+.item-status {
+  font-family: 'Orbitron';
+  font-size: 0.7rem;
+  padding: 5px 15px;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+  text-shadow: 0 0 5px #00ff00;
+  box-shadow: inset 0 0 5px #00ff00;
+  transform: rotate(-5deg);
+}
+
+.status-msg {
+  font-family: 'Orbitron';
+  color: var(--neon-purple);
+  letter-spacing: 3px;
+}

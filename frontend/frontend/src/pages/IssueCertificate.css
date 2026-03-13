@@ -1,0 +1,127 @@
+/* --- FONTS & IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-purple: #bc00ff;
+  --bg-dark: #050505;
+  --panel-bg: rgba(12, 12, 15, 0.98);
+}
+
+/* --- PAGE WRAPPER --- */
+.issue-container {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  font-family: 'Rajdhani', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1500px; /* For 3D Tilt interactivity */
+  padding: 60px 20px;
+  position: relative;
+  overflow-x: hidden;
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px; /* Tech grid background */
+}
+
+/* --- HUD SCANLINES --- */
+.issue-container::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+  background-size: 100% 4px;
+  z-index: 10;
+  pointer-events: none; /* Flicker monitor effect */
+}
+
+/* --- MINTING PANEL --- */
+.issue-box {
+  width: 100%;
+  max-width: 650px;
+  padding: 60px 45px;
+  background: var(--panel-bg);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-left: 4px solid var(--neon-cyan);
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 94%, 96% 100%, 0 100%); /* Angular industrial cut */
+  transform-style: preserve-3d;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.issue-box h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem; /* Massive Scale */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 40px;
+  text-shadow: 0 0 15px var(--neon-cyan);
+}
+
+/* --- FORM INPUTS --- */
+.issue-box input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #333;
+  padding: 16px 20px;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem; /* Larger font size */
+  margin-bottom: 20px;
+  transition: 0.3s;
+  clip-path: polygon(2% 0, 100% 0, 98% 100%, 0 100%); /* Angular input design */
+}
+
+.issue-box input:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+}
+
+/* Custom File Input Styling */
+.issue-box input[type="file"] {
+  background: rgba(188, 0, 255, 0.05);
+  border: 1px dashed var(--neon-purple);
+  padding: 20px;
+  cursor: pointer;
+  clip-path: none; /* Keeping file input rectangle for better click area */
+}
+
+/* --- ACTION BUTTON --- */
+.issue-box button {
+  width: 100%;
+  padding: 20px;
+  background: var(--neon-cyan);
+  color: #000;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem; /* Massive Scale */
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  text-transform: uppercase;
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%); /* Sharp action cut */
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.issue-box button:hover {
+  background: #fff;
+  box-shadow: 0 0 30px var(--neon-cyan);
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* HUD Decorative Details */
+.issue-box::after {
+  content: "// PROTOCOL.MINT_INITIATED";
+  position: absolute;
+  top: 15px;
+  right: 45px;
+  font-family: 'Orbitron';
+  font-size: 0.6rem;
+  color: var(--neon-cyan);
+  opacity: 0.3;
+}

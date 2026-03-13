@@ -1,0 +1,130 @@
+/* --- FONTS & THEME --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-purple: #bc00ff;
+  --bg-dark: #050505;
+  --panel-bg: rgba(12, 12, 15, 0.95);
+  --text-dim: #94a3b8;
+}
+
+/* --- DASHBOARD WRAPPER --- */
+.dashboard {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  padding: 60px 8%;
+  position: relative;
+  overflow-x: hidden;
+  /* Technical Grid Background */
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* --- HUD OVERLAYS --- */
+.dashboard::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+/* --- HEADER SECTION --- */
+.dashboard h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 4rem); /* Massive Typography */
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #fff;
+  text-shadow: 0 0 15px var(--neon-cyan);
+  margin-bottom: 10px;
+}
+
+.dashboard p {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--neon-cyan);
+  font-size: 0.9rem;
+  letter-spacing: 5px;
+  margin-bottom: 60px;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+/* --- INTERACTIVE CARDS --- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  perspective: 1500px; /* For 3D Tilt */
+}
+
+.card {
+  background: var(--panel-bg);
+  border: 1px solid #222;
+  border-left: 4px solid var(--neon-cyan); /* Zoku accent */
+  padding: 50px 40px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Angular Cyber Cut */
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 92% 100%, 0 100%);
+  transform-style: preserve-3d;
+}
+
+.card:hover {
+  background: #111;
+  border-left-color: var(--neon-purple);
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), 0 0 20px rgba(188, 0, 255, 0.2);
+}
+
+.card h3 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem; /* Scaled Card Title */
+  color: #fff;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.card p {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem; /* Larger Body Text */
+  color: var(--text-dim);
+  letter-spacing: 1px;
+  margin-bottom: 0;
+  opacity: 1;
+}
+
+/* Decorative Card HUD details */
+.card::after {
+  content: "ACCESS_PROTOCOL_ENCRYPTED";
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-family: 'Orbitron';
+  font-size: 0.6rem;
+  color: var(--neon-cyan);
+  opacity: 0.3;
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 40px 5%;
+    text-align: center;
+  }
+  
+  .card {
+    padding: 40px 25px;
+  }
+}

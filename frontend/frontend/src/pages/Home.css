@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-purple: #bc00ff;
+  --bg-dark: #050505;
+  --panel-bg: rgba(12, 12, 15, 0.95);
+  --text-dim: #94a3b8;
+}
+
+/* --- HUD LAYERS --- */
+.home {
+  background-color: var(--bg-dark);
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  min-height: 100vh;
+  /* CLEAN TECH GRID */
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.noise {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.1;
+  background-image: radial-gradient(#fff 1px, transparent 0);
+  background-size: 5px 5px;
+}
+
+.scanlines {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 1001;
+  pointer-events: none;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%);
+  background-size: 100% 4px;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 8%;
+  background: rgba(0, 0, 0, 0.9);
+  border-bottom: 2px solid var(--neon-cyan);
+  position: sticky;
+  top: 0; z-index: 1100;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 98% 100%, 0 100%);
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.logo span { color: var(--neon-cyan); text-shadow: 0 0 10px var(--neon-cyan); }
+
+.nav-links { display: flex; list-style: none; gap: 1.5rem; }
+.nav-links li {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.nav-links li:hover { color: var(--neon-cyan); text-shadow: 0 0 5px var(--neon-cyan); }
+
+/* --- HERO --- */
+.hero {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-status {
+  color: var(--neon-cyan);
+  font-family: 'Orbitron';
+  font-size: 0.7rem;
+  letter-spacing: 5px;
+  margin-bottom: 15px;
+}
+
+.glitch {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(2.2rem, 8vw, 5rem);
+  font-weight: 900;
+  text-shadow: 3px 3px var(--neon-purple);
+  margin-bottom: 10px;
+}
+
+.hero-subtext {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  letter-spacing: 2px;
+}
+
+/* --- SECTIONS --- */
+.section {
+  padding: 100px 10%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-tag { color: var(--neon-cyan); font-family: 'Orbitron'; font-size: 0.7rem; }
+
+/* --- CARDS --- */
+.steps-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.step-card {
+  background: var(--panel-bg);
+  border: 1px solid #222;
+  border-left: 4px solid var(--neon-cyan);
+  padding: 35px;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 80%, 98% 100%, 0 100%);
+  transition: 0.3s;
+}
+
+.step-card:hover {
+  border-left-color: var(--neon-purple);
+  transform: translateX(15px);
+  background: #111;
+}
+
+.step-number {
+  position: absolute;
+  top: 10px; right: 20px;
+  font-family: 'Orbitron';
+  font-size: 3rem;
+  opacity: 0.05;
+}
+
+/* --- BUTTONS --- */
+.btn-cyber {
+  background: var(--neon-cyan);
+  color: #000;
+  border: none;
+  padding: 15px 35px;
+  font-family: 'Orbitron';
+  font-weight: 800;
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
+  cursor: pointer;
+  margin-right: 15px;
+  transition: 0.3s;
+}
+
+.btn-cyber.outline {
+  background: transparent;
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+}
+
+.btn-cyber:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 0 20px var(--neon-cyan);
+}
+
+/* --- ROLE PANELS --- */
+.roles {
+  background: #0a0a0c;
+  border: 1px solid #222;
+  padding: 60px;
+  margin-bottom: 50px;
+  border-right: 4px solid var(--neon-purple);
+  clip-path: polygon(0 0, 98% 0, 100% 10%, 100% 100%, 0 100%);
+}
+
+/* --- FOOTER --- */
+.footer {
+  padding: 60px;
+  text-align: center;
+  border-top: 1px solid var(--neon-cyan);
+  font-family: 'Orbitron';
+  font-size: 0.75rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .section { padding: 60px 5%; }
+  .glitch { font-size: 2.5rem; }
+}
+
+
+
+
+

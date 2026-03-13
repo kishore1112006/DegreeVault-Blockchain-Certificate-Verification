@@ -1,0 +1,153 @@
+/* --- FONTS & IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-purple: #bc00ff;
+  --bg-dark: #050505;
+  --panel-bg: rgba(12, 12, 15, 0.98);
+}
+
+/* --- PAGE WRAPPERS (Both Components) --- */
+.register-page, .login-container {
+  min-height: 100vh;
+  background-color: var(--bg-dark);
+  font-family: 'Rajdhani', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1500px; /* Essential for 3D tilt effects */
+  padding: 40px 20px;
+  position: relative;
+  overflow-x: hidden;
+  
+  /* Technical Grid Background */
+  background-image: 
+    linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* --- HUD OVERLAY --- */
+.register-page::before, .login-container::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
+  background-size: 100% 4px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* --- REGISTRATION BOXES (Both Components) --- */
+.register-card, .login-box {
+  width: 100%;
+  max-width: 550px;
+  padding: 60px 45px;
+  background: var(--panel-bg);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  border-left: 4px solid var(--neon-cyan); /* Zoku-style accent */
+  position: relative;
+  
+  /* Angular Geometric Cut */
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 95% 100%, 0 100%);
+  transform-style: preserve-3d;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+.register-card h2, .login-box h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem; /* Massive Scale */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  text-shadow: 0 0 15px var(--neon-cyan);
+}
+
+.register-card p, .login-box p {
+  color: var(--neon-cyan);
+  font-family: 'Orbitron';
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  opacity: 0.8;
+  text-transform: uppercase;
+}
+
+/* --- FORM INPUTS --- */
+.register-card input, .login-box input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid #333 !important;
+  padding: 16px 20px;
+  color: #fff;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.2rem; /* Larger font size */
+  margin-bottom: 15px;
+  transition: 0.3s;
+  
+  /* Angular Input Design */
+  clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);
+}
+
+.register-card input:focus, .login-box input:focus {
+  outline: none;
+  border-color: var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.05);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
+}
+
+/* --- SUBMIT BUTTONS --- */
+.register-card button, .login-box button {
+  width: 100%;
+  padding: 20px;
+  background: var(--neon-cyan);
+  color: #000;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem; /* Massive Scale */
+  border: none;
+  cursor: pointer;
+  margin-top: 15px;
+  text-transform: uppercase;
+  
+  /* Sharp Action Cut */
+  clip-path: polygon(8% 0, 100% 0, 92% 100%, 0 100%);
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.register-card button:hover, .login-box button:hover {
+  background: #fff;
+  box-shadow: 0 0 30px var(--neon-cyan);
+  transform: translateY(-5px) scale(1.02);
+}
+
+/* --- LINK & ERROR STYLING --- */
+.register-card a, .login-box a {
+  color: var(--neon-cyan);
+  text-decoration: none;
+  font-weight: 700;
+  font-family: 'Orbitron';
+  font-size: 0.75rem;
+}
+
+.error {
+  color: var(--neon-purple);
+  font-family: 'Orbitron';
+  font-size: 0.8rem;
+  margin-top: 10px;
+  text-shadow: 0 0 5px var(--neon-purple);
+}
+
+/* Decorative Status HUD label */
+.register-card::after, .login-box::after {
+  content: "// SECURE_PROTOCOL_INIT";
+  position: absolute;
+  top: 15px;
+  right: 45px;
+  font-family: 'Orbitron';
+  font-size: 0.6rem;
+  color: var(--neon-cyan);
+  opacity: 0.3;
+}
